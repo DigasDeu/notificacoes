@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funcionários | Sistema de Notificação</title>
+
+  <link rel="stylesheet" href="../assets/css/funcionarios.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <h2>Sistema de Notificação</h2>
+      <p>Logística e Encaminhamento</p>
+    </div>
+
+    <nav class="menu">
+      <a href="../dashboard.html">Dashboard</a>
+      <a href="funcionarios.html" class="active">Funcionários</a>
+      <a href="locaisdomicilios.html">Locais/Domicílios</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="encaminhamentos.html">Encaminhamentos</a>
+      <a href="monitoramento.html">Monitoramento</a>
+      <a href="relatorio.html">Relatórios</a>
+    </nav>
+
+    <button class="logout" id="logoutBtn">Sair</button>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Cadastro de Funcionários</h1>
+        <p>Gerencie os usuários e permissões do sistema.</p>
+      </div>
+
+      <button class="btn-primary" id="abrirModalBtn">+ Novo Funcionário</button>
+    </header>
+
+    <section class="panel">
+      <div class="table-header">
+        <h2>Funcionários cadastrados</h2>
+        <input type="text" id="pesquisaFuncionario" placeholder="Pesquisar funcionário...">
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Cargo</th>
+            <th>Perfil</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody id="listaFuncionarios">
+          <tr>
+            <td colspan="7">Nenhum funcionário cadastrado.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="modalFuncionario">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="tituloModal">Novo Funcionário</h2>
+      <button id="fecharModalBtn">×</button>
+    </div>
+
+    <form id="formFuncionario">
+      <input type="hidden" id="funcionarioId">
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input type="text" id="nome" required>
+        </div>
+
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="text" id="telefone" required>
+        </div>
+
+        <div class="form-group">
+          <label>Cargo</label>
+          <input type="text" id="cargo" required>
+        </div>
+
+        <div class="form-group">
+          <label>Perfil de acesso</label>
+          <select id="perfil" required>
+            <option value="">Selecione</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Conselho">Conselho</option>
+            <option value="Gerente">Gerente</option>
+            <option value="Unidade">Unidade</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Status</label>
+          <select id="status" required>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" id="cancelarBtn">Cancelar</button>
+        <button type="submit" class="btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</body>
+</html>

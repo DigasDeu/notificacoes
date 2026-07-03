@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Sistema de Notificação</title>
+
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>Sistema de Notificação</h2>
+        <p>Logística e Encaminhamento</p>
+      </div>
+
+      <nav class="menu">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="pages/funcionarios.html">Funcionários</a>
+        <a href="pages/locaisdomicilios.html">Locais/Domicílios</a>
+        <a href="pages/notificacoes.html">Notificações</a>
+        <a href="pages/encaminhamentos.html">Encaminhamentos</a>
+        <a href="pages/monitoramento.html">Monitoramento</a>
+        <a href="pages/relatorio.html">Relatórios</a>
+      </nav>
+
+      <button class="logout" id="logoutBtn">Sair</button>
+    </aside>
+
+    <main class="main-content">
+
+      <header class="topbar">
+        <div>
+          <h1>Dashboard</h1>
+          <p id="saudacao">Bem-vindo ao sistema</p>
+        </div>
+
+        <div class="top-actions">
+          <input type="text" class="search-global" placeholder="Pesquisar no sistema...">
+          <button class="theme-btn" id="themeBtn">🌙</button>
+          <button class="notify-btn">🔔 <span>3</span></button>
+        </div>
+      </header>
+
+      <section class="cards">
+        <div class="card">
+          <span>Total de Denúncias</span>
+          <strong class="contador">0</strong>
+        </div>
+
+        <div class="card">
+          <span>Em Análise</span>
+          <strong class="contador">0</strong>
+        </div>
+
+        <div class="card">
+          <span>Em Monitoramento</span>
+          <strong class="contador">0</strong>
+        </div>
+
+        <div class="card">
+          <span>Resolvidas</span>
+          <strong class="contador">0</strong>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="panel">
+          <h2>Situação das Denúncias</h2>
+          <canvas id="graficoSituacao"></canvas>
+        </div>
+
+        <div class="panel">
+          <h2>Percentual por Situação</h2>
+          <canvas id="graficoPizza"></canvas>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="panel">
+          <h2>Evolução Mensal</h2>
+          <canvas id="graficoLinha"></canvas>
+        </div>
+
+        <div class="panel">
+          <h2>Mapa das Unidades Notificadas</h2>
+          <div id="map"></div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="panel">
+          <h2>Central de Notificações</h2>
+
+          <div class="notification-list">
+            <div class="notification-item">
+              <strong>Nova denúncia cadastrada</strong>
+              <p>Uma nova denúncia foi registrada no sistema.</p>
+            </div>
+
+            <div class="notification-item">
+              <strong>Encaminhamento pendente</strong>
+              <p>Há denúncias aguardando análise do Conselho.</p>
+            </div>
+
+            <div class="notification-item">
+              <strong>Monitoramento ativo</strong>
+              <p>Algumas unidades estão em acompanhamento.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Controle de Permissões</h2>
+
+          <div class="permissions">
+            <div><strong>Administrador</strong><span>Acesso total</span></div>
+            <div><strong>Conselho</strong><span>Análise e encaminhamento</span></div>
+            <div><strong>Gerente</strong><span>Cadastro e acompanhamento</span></div>
+            <div><strong>Unidade</strong><span>Registro e consulta</span></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+ 
+</body>
+</html>

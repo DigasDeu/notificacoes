@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locais/Domicílios | Sistema de Notificação</title>
+
+  <link rel="stylesheet" href="../assets/css/locaisdomicilios.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <h2>Sistema de Notificação</h2>
+      <p>Logística e Encaminhamento</p>
+    </div>
+
+    <nav class="menu">
+      <a href="../dashboard.html">Dashboard</a>
+      <a href="funcionarios.html">Funcionários</a>
+      <a href="locaisdomicilios.html" class="active">Locais/Domicílios</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="encaminhamentos.html">Encaminhamentos</a>
+      <a href="monitoramento.html">Monitoramento</a>
+      <a href="relatorio.html">Relatórios</a>
+    </nav>
+
+    <button class="logout" id="logoutBtn">Sair</button>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Cadastro de Local/Domicílio</h1>
+        <p>Cadastre unidades, domicílios, comunidades e locais vinculados às notificações.</p>
+      </div>
+    </header>
+
+    <section class="panel">
+      <form id="formLocal">
+        <h2>Identificação do local</h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Código</label>
+            <input type="text" id="codigoLocal" readonly>
+          </div>
+
+          <div class="form-group">
+            <label>Classificação *</label>
+            <select id="classificacaoLocal" required>
+              <option value="">Selecione</option>
+              <option value="Unidade notificante">Unidade notificante</option>
+              <option value="Domicílio">Domicílio</option>
+              <option value="Comunidade">Comunidade</option>
+              <option value="Conselho">Conselho</option>
+              <option value="Setor administrativo">Setor administrativo</option>
+              <option value="Local de ocorrência">Local de ocorrência</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Tipo *</label>
+            <select id="tipoLocal" required>
+              <option value="">Selecione</option>
+              <option value="UBS">UBS</option>
+              <option value="Hospital">Hospital</option>
+              <option value="Conselho">Conselho</option>
+              <option value="Domicílio urbano">Domicílio urbano</option>
+              <option value="Domicílio rural">Domicílio rural</option>
+              <option value="Comunidade rural">Comunidade rural</option>
+              <option value="Comunidade ribeirinha">Comunidade ribeirinha</option>
+              <option value="Setor">Setor</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Nome do local *</label>
+            <input type="text" id="nomeLocal" placeholder="Ex: UBS Jorge Brito, Residência..." required>
+          </div>
+
+          <div class="form-group">
+            <label>Sigla</label>
+            <input type="text" id="siglaLocal" placeholder="Ex: UBSJB, HOSP, DOM">
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select id="statusLocal">
+              <option value="Ativo">Ativo</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Inativo">Inativo</option>
+              <option value="Em monitoramento">Em monitoramento</option>
+            </select>
+          </div>
+        </div>
+
+        <h2>Responsável e vínculo</h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Responsável</label>
+            <input type="text" id="responsavelLocal" placeholder="Nome do responsável">
+          </div>
+
+          <div class="form-group">
+            <label>Telefone/WhatsApp</label>
+            <input type="text" id="telefoneResponsavel" placeholder="(92) 99999-9999">
+          </div>
+
+          <div class="form-group">
+            <label>Unidade/local vinculado</label>
+            <select id="unidadeVinculada">
+              <option value="">Não se aplica</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Observação rápida do vínculo</label>
+            <input type="text" id="vinculoLocal" placeholder="Ex: Vinculado à UBS Aracy">
+          </div>
+        </div>
+
+        <h2>Endereço</h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Endereço/localidade *</label>
+            <input type="text" id="enderecoLocal" required>
+          </div>
+
+          <div class="form-group">
+            <label>Bairro/Comunidade *</label>
+            <input type="text" id="bairroLocal" required>
+          </div>
+
+          <div class="form-group">
+            <label>Número</label>
+            <input type="text" id="numeroLocal">
+          </div>
+
+          <div class="form-group">
+            <label>Complemento</label>
+            <input type="text" id="complementoLocal">
+          </div>
+
+          <div class="form-group">
+            <label>Rio/Ramal/Estrada</label>
+            <input type="text" id="rioRamalEstrada">
+          </div>
+
+          <div class="form-group">
+            <label>Link do Google Maps</label>
+            <input type="url" id="googleMapsUrl" placeholder="Cole o link se tiver">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ponto de referência</label>
+          <input type="text" id="referenciaLocal">
+        </div>
+
+        <h2>Localização no mapa</h2>
+
+        <div class="location-row">
+          <input type="text" id="buscaMapa" placeholder="Digite endereço, bairro ou comunidade">
+
+          <button type="button" class="map-btn" id="buscarEndereco">
+            <i class="fas fa-search-location"></i>
+            Buscar
+          </button>
+
+          <button type="button" class="map-btn green" id="usarLocalizacao">
+            <i class="fas fa-crosshairs"></i>
+            Minha localização
+          </button>
+        </div>
+
+        <div id="mapaCadastroLocal" class="mapa-local"></div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Latitude</label>
+            <input type="text" id="latitudeLocal" readonly>
+          </div>
+
+          <div class="form-group">
+            <label>Longitude</label>
+            <input type="text" id="longitudeLocal" readonly>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Observações</label>
+          <textarea id="observacoesLocal"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="secondary-btn" id="limparBtn">Limpar</button>
+          <button type="submit" class="primary-btn">Salvar Local/Domicílio</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="table-header">
+        <h2>Locais cadastrados</h2>
+        <input type="text" id="pesquisaLocal" placeholder="Pesquisar local...">
+      </div>
+
+      <div id="listaLocais" class="lista-locais">
+        <p>Nenhum local cadastrado.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="../assets/js/locaisdomicilios.js"></script>
+</body>
+</html>

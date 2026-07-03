@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Sistema de Notificação</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="login-body">
+
+  <main class="login-container">
+    <section class="login-card">
+      <div class="login-header">
+        <h1>Sistema de Notificação</h1>
+        <p>Logística de Notificação e Encaminhamento</p>
+      </div>
+
+      <div class="login-error" id="loginError">
+        Preencha usuário e senha para continuar.
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="usuario">Usuário ou E-mail</label>
+          <input type="text" id="usuario" placeholder="Digite seu usuário">
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" placeholder="Digite sua senha">
+        </div>
+
+        <button type="submit" class="btn-login">Entrar</button>
+      </form>
+
+      <p class="login-footer">
+        Acesso destinado aos responsáveis pelo sistema.
+      </p>
+    </section>
+  </main>
+
+  <script src="assets/js/login.js"></script>
+</body>
+</html>
